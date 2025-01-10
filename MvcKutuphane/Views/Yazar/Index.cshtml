@@ -13,18 +13,24 @@
         <th>Yazar Adı</th>
         <th>Yazar Soyad</th>
         <th>Yazar Detay</th>
-        
+        <th>Sil</th>
+        <th>Güncelle</th>
+
     </tr>
 
-    @foreach (var yzr in Model)
+    @foreach (var y in Model)
     {
         <tr>
-            <td>@yzr.ID</td>
-            <td>@yzr.AD</td>
-            <td>@yzr.SOYAD</td>
-            <td>@yzr.DETAY</td>
-            <td><a href="/Kategori/KategoriSil/@yzr.ID" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Kategori/KategoriGetir/@yzr.ID" class="btn btn-success">Güncelle</a></td>
+            <td>@y.ID</td>
+            <td>@y.AD</td>
+            <td>@y.SOYAD</td>
+            <td>@y.DETAY</td>
+            <td>
+                @Html.ActionLink("Sil", "YazarSil", new { id = y.ID },
+                    new { @class = "btn btn-danger", onclick = 
+                    "return confirm('Silmek İsriyor musunuz?')" })
+            </td>
+            <td><a href="/Yazar/YazarGetir/@y.ID" class="btn btn-success">Güncelle</a></td>
         </tr>
 
     }

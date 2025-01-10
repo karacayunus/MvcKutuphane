@@ -15,5 +15,30 @@ namespace MvcKutuphane.Controllers
             var degerler =db.TBLYAZAR.ToList();
             return View(degerler);
         }
+
+        [HttpGet]
+        public ActionResult YazarEkle() {
+
+            return View();
+        
+        
+        }
+        [HttpPost]
+        public ActionResult YazarEkle(TBLYAZAR p)
+        {
+
+            db.TBLYAZAR.Add(p);
+            db.SaveChanges();
+            return View();
+
+
+        }
+        public ActionResult YazarSil(int id)
+        {
+            var yazar = db.TBLYAZAR.Find(id);
+            db.TBLYAZAR.Remove(yazar);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
