@@ -29,7 +29,7 @@ namespace MvcKutuphane.Controllers
         {
             db.TBLKATEGORI.Add(p);   //eklenece kısım
             db.SaveChanges();         //databaseye kaydetme
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult KategoriSil(int id)

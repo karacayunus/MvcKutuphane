@@ -20,6 +20,7 @@ namespace MvcKutuphane.Controllers
         public ActionResult YazarEkle() {
 
             return View();
+
         
         
         }
@@ -29,7 +30,7 @@ namespace MvcKutuphane.Controllers
 
             db.TBLYAZAR.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
 
 
         }

@@ -89,11 +89,17 @@ namespace MvcKutuphane.Controllers
         {
             var kitap = db.TBLKITAP.Find(p.ID);
             kitap.AD = p.AD;
-            kitap.YAZAR = p.YAZAR;
             kitap.BASIMYIL = p.BASIMYIL;
-            kitap.YAYINEVİ = p.YAYINEVİ;
             kitap.SAYFA = p.SAYFA;
-            kitap.DURUM = p.DURUM;
+            kitap.YAYINEVİ = p.YAYINEVİ;
+
+            var ktg = db.TBLKATEGORI.Where(k => k.ID == p.TBLKATEGORI.ID).FirstOrDefault();
+            var yzr = db.TBLYAZAR.Where(y => y.ID == p.TBLYAZAR.ID).FirstOrDefault();    
+
+            kitap.KATEGORI = ktg.ID;
+            kitap.YAZAR = yzr.ID;   
+
+
             db.SaveChanges();
             return RedirectToAction("Index");
 
